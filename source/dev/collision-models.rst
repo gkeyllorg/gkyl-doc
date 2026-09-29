@@ -333,6 +333,7 @@ The are known issues with the implementation of the collision operators in Gkeyl
 One of them, for example, is that we do not have a positivy preseving algorithm for
 the LBO. Positivity issues are often accompanied by large flows or negative temperatures
 and/or densities. For this reason we have taken three precautions:
+
   1. Calculation of primitive moments :math:`\mathbf{u}_{sr}` and :math:`v_{tsr}^2`
      is carried out using cell-average values if the number density is non-positive at
      one of the corners of that cell.
@@ -437,11 +438,11 @@ of the distribution function as function of time with ``pgkyl``:
 
 .. code-block:: bash
 
-  pgkyl "lboRelax_bump_[0-9]*.bp" interp sel --z0 0. anim -x '$v$' -y '$f(x=0,v,t)$'
+  pgkyl "lboRelax_bump_[0-9]*.bp" interp sel --z0 0. animate
 
-(note that :ref:`postgkyl <pg_usage>` allows abbreviations,
-so ``interp`` = :ref:`pg_cmd_interpolate`, ``sel`` = :ref:`pg_cmd_select`,
-``anim`` = :ref:`pg_cmd_animate`) This command produces the movie given below. We can see that from the
+(note that :doc:`Postgkyl </postgkyl/reference/cli>` allows abbreviations,
+so ``interp`` = :doc:`interpolate </postgkyl/reference/cli-interpolate>`, ``sel`` = :doc:`select </postgkyl/reference/cli-select>`,
+``anim`` = :doc:`animate </postgkyl/reference/cli-animate>`) This command produces the movie given below. We can see that from the
 initial, bump-in-tail state the distribution relaxes to a Maxwellian.
 The Maxwellian by the way is the analytic steady state of this operator.
 
@@ -460,7 +461,7 @@ it as a function of time. This is achieved in ``pgkyl`` via:
 
 .. code-block:: bash
 
-  pgkyl lboRelax_bump_intM2Flow.bp lboRelax_bump_intM2Thermal.bp ev 'f[0] f[1] +' pl -x 'time' -y 'energy'
+  pgkyl lboRelax_bump_intM2Flow.bp lboRelax_bump_intM2Thermal.bp evaluate 'f0 f1 +' pl --xlabel 'time' --ylabel 'energy'
 
 As we can see in the figure below, and in particular in the :math:`10^{-14}`
 scale of it, the total particle energy is conserved very well. The changes
@@ -577,11 +578,11 @@ We can plot this fluctuation along :math:`v_\parallel` at :math:`$t=5$` with
 
 .. code:: bash
 
-  pgkyl "ionSound_ion_f1_10.bp" interp sel --z0 0.0 --z2 0.0 pl -x '$v_\parallel$' -y '$f_{i1}(x=0,v_\parallel,\mu=0,t=5)$'
+  pgkyl "ionSound_ion_f1_10.bp" interp sel --z0 0.0 --z2 0.0 pl --xlabel '$v_\parallel$' --ylabel '$f_{i1}(x=0,v_\parallel,\mu=0,t=5)$'
 
-(note that :ref:`postgkyl <pg_usage>` allows abbreviations,
-so ``interp`` = :ref:`pg_cmd_interpolate`, ``sel`` = :ref:`pg_cmd_select`,
-``pl`` = :ref:`pg_cmd_plot`) which produces the following image
+(note that :doc:`Postgkyl </postgkyl/reference/cli>` allows abbreviations,
+so ``interp`` = :doc:`interpolate </postgkyl/reference/cli-interpolate>`, ``sel`` = :doc:`select </postgkyl/reference/cli-select>`,
+``pl`` = :doc:`plot </postgkyl/reference/cli-plot>`) which produces the following image
 
 .. figure:: figures/ionSound_ion_f1_10.png
   :scale: 40 %
@@ -601,7 +602,7 @@ energies in time with the following ``pgkyl`` command:
 
 .. code:: bash
 
-  pgkyl ionSound_phi2.bp -l '$\nu=0.005$' ionSoundH_phi2.bp -l '$\nu=0.05$' pl --logy -f0 -x 'time' -y 'Integrated $|\phi|^2$'
+  pgkyl load --file_name ionSound_phi2.bp -l '$\nu=0.005$' load --file_name ionSoundH_phi2.bp -l '$\nu=0.05$' pl --logy -f0 --xlabel 'time' --ylabel 'Integrated $|\phi|^2$'
 
 Notice that we are giving each file a label to use in the plot with the ``-l`` flag. Postgkyl
 then produces the following figure

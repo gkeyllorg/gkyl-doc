@@ -8,6 +8,9 @@
 This Quick Start guide assumes that you already have working installations of both
 :math:`\texttt{Gkeyll}` and :math:`\texttt{postgkyl}` on your chosen machine. If you
 don't, please read :ref:`our installation instructions <install>` first.
+For post-processing, see the :doc:`Postgkyl examples <postgkyl/examples>`
+and :doc:`command reference <postgkyl/reference/cli>` built from the
+Postgkyl repository.
 
 .. _quickstart_moments:
 
@@ -522,12 +525,12 @@ initial state output to ``rt_5m_gem-elc_0.gkyl``). We can instruct
 mass density :math:`\rho_e`, components 1, 2, and 3 corresponding to the :math:`x`,
 :math:`y`, and :math:`z` components of the momentum density :math:`\rho_e \mathbf{u}_e`,
 and component 4 corresponding to the total energy density :math:`E_e`) of this data by
-calling ``sel -c3`` before calling ``plot``, and we can append the argument ``-a`` to
+calling ``sel -c3`` before calling ``plot``, and we can append the argument ``--fixaspect`` to
 tell :math:`\texttt{postgkyl}` to plot everything with the correct aspect ratio:
 
 .. code-block:: bash
 
-  pgkyl rt_5m_gem-elc_1.gkyl sel -c3 plot -a
+  pgkyl rt_5m_gem-elc_1.gkyl sel -c3 plot --fixaspect
 
 .. figure:: figures/5MGemElc.png
   :scale: 40%
@@ -545,7 +548,7 @@ component 3 of this data and plot it in exactly the same way:
 
 .. code-block:: bash
 
-  pgkyl rt_5m_gem-ion_1.gkyl sel -c3 plot -a
+  pgkyl rt_5m_gem-ion_1.gkyl sel -c3 plot --fixaspect
 
 .. figure:: figures/5MGemIon.png
   :scale: 40%
@@ -564,12 +567,12 @@ select only component 5 (with components 0, 1, and 2 corresponding to the :math:
 :math:`y`, and :math:`z` components of the electric field :math:`\mathbf{E}` and
 components 3, 4, and 5 corresponding to components :math:`x`, :math:`y`, and :math:`z`
 of the magnetic field :math:`\mathbf{B}`) of this data by calling ``sel -c5`` before
-calling ``plot``, and as before we can append the argument ``-a`` to tell
+calling ``plot``, and as before we can append the argument ``--fixaspect`` to tell
 :math:`\texttt{postgkyl}` to plot everything with the correct aspect ratio:
 
 .. code-block:: bash
 
-  pgkyl rt_5m_gem-field_1.gkyl sel -c5 plot -a
+  pgkyl rt_5m_gem-field_1.gkyl sel -c5 plot --fixaspect
 
 .. figure:: figures/5MGemField.png
   :scale: 40%
@@ -1026,12 +1029,12 @@ electron species is output to the file ``rt_vlasov_twostream_p2-elc_1.gkyl`` (wi
 corresponding initial state output to ``rt_vlasov_twostream_p2-elc_0.gkyl``). We can
 instruct :math:`\texttt{postgkyl}` to interpolate a discontinuous solution from the
 stored coefficients of the modal discontinuous Galerkin (DG) expansion by calling
-``interp`` before calling ``plot``, and we can append the argument ``-a`` to tell
+``interp`` before calling ``plot``, and we can append the argument ``--fixaspect`` to tell
 :math:`\texttt{postgkyl}`  to plot everything with the correct aspect ratio:
 
 .. code-block:: bash
 
-  pgkyl rt_vlasov_twostream_p2-elc_1.gkyl interp plot -a
+  pgkyl rt_vlasov_twostream_p2-elc_1.gkyl interp plot --fixaspect
 
 .. figure:: figures/VlasovTwostreamElc.png
   :scale: 40%
@@ -1052,7 +1055,7 @@ instruct :math:`\texttt{postgkyl}` to select only component 0 (with components 0
 2 corresponding to the :math:`x`, :math:`y`, and :math:`z` components of the electric
 field :math:`\mathbf{E}` and components 3, 4, and 5 corresponding to the :math:`x`,
 :math:`y`, and :math:`z` components of the magnetic field :math:`\textbf{B}`) of this
-data by calling ``sel -c0`` before calling ``plot`` (note that we omit the ``-a``
+data by calling ``sel -c0`` before calling ``plot`` (note that we omit the ``--fixaspect``
 argument since the data being plotted is one-dimensional):
 
 .. code-block:: bash

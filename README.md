@@ -17,7 +17,11 @@ Open `build/html/index.html`. `make html` fetches Postgkyl **main** into
 Gkeyll bridge, executes its examples, and stages its documentation in
 `source/postgkyl/`. The first build needs network access and can take several
 minutes. Both directories are ignored build inputs/outputs; edit Postgkyl
-content in its own repository. A later build fetches main again. A dirty
+content in its own repository. Link host pages to `postgkyl/index`,
+`postgkyl/installation`, `postgkyl/examples`, or `postgkyl/reference/cli`
+using Sphinx `:doc:` links; do not maintain a second Postgkyl manual here.
+The obsolete manual under `source_archive/postgkyl` has been removed.
+A later build fetches main again. A dirty
 managed checkout is refused rather than overwritten.
 
 For a local Postgkyl change before it reaches main:

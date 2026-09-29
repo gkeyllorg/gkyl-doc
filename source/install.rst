@@ -409,84 +409,12 @@ serial run.
 Installing :math:`\texttt{postgkyl}`
 ------------------------------------
 
-:math:`\texttt{postgkyl}` is :math:`\texttt{Gkeyll}`'s custom-built Python
-post-processing and visualization pipeline, capable of performing many advanced analysis
-and plotting tasks on :math:`\texttt{Gkeyll}` simulation output. For further information on how to use these capabilities, please refer to this `tutorial presentation by Petr Cagas <_static/Postgkyl_Petr.pdf>`__. To build
-:math:`\texttt{postgkyl}` from source, one must first clone the repository from GitHub
-(`which can be found here <https://github.com/gkeyllorg/postgkyl>`__):
+Follow the :doc:`Postgkyl installation guide <postgkyl/installation>` to
+install the Python package and the ``pgkyl`` command-line tool. That guide is
+generated from the Postgkyl repository as part of this website build.
 
-.. code-block:: bash
-
-  git clone https://github.com/gkeyllorg/postgkyl.git
-
-and then, once it has been cloned, navigate into the ``postgkyl`` directory:
-
-.. code-block:: bash
-
-  cd postgkyl
-
-At this point, we recommend using ``venv`` to create a Python virtual environment
-specifically for :math:`\texttt{postgkyl}`, for instance by running:
-
-.. code-block:: bash
-
-  python -m venv /pgkyl
-
-where ``/pgkyl`` in the above can be replaced with any file path, corresponding to where
-the :math:`\texttt{postgkyl}` virtual environment should be stored. How this environment
-should be activated depends upon which shell you are using (which you can determine by
-running ``echo $0`` or ``echo $SHELL``). For ``bash`` or ``zsh``, you should run:
-
-.. code-block:: bash
-
-  source pgkyl/bin/activate
-
-while for ``fish``, you should run:
-
-.. code-block:: bash
-
-  source pgkyl/bin/activate.fish
-
-and finally for ``csh`` or ``tcsh``, you should run:
-
-.. code-block:: bash
-
-  source pgkyl/bin/activate.csh
-
-where, in each of the above, ``pgkyl`` can be replaced by whichever alternative file
-path the virtual environment was stored within, as applicable. Once the virtual
-environment has been activated, :math:`\texttt{postgkyl}` itself can be installed
-using ``pip``:
-
-.. code-block:: bash
-
-  pip install -e .
-
-which will also automatically install each of :math:`\texttt{postgkyl}`'s dependencies,
-i.e. ``click``, ``matplotlib``, ``msgpack``, ``numpy``, ``scipy``, ``sympy``, and
-``tables``, as needed. Once the ``pip`` installation has been completed, to confirm that
-:math:`\texttt{postgkyl}` has been built correctly, try compiling and running a simple
-:math:`\texttt{moments}` C regression test in :math:`\texttt{Gkeyll}`:
-
-.. code-block:: bash
-
-  make moments-regression -j
-  ./build/moments/creg/rt_5m_gem
-
-and then plotting the resulting simulation data with :math:`\texttt{postgkyl}`:
-
-.. code-block:: bash
-
-  pgkyl rt_5m_gem-elc_1.gkyl sel -c3 plot -a
-
-.. figure:: figures/5MGemElc.png
-  :scale: 40%
-  :align: center
-
-  The :math:`z`-component (i.e. the out-of-plane component) of the electron momentum
-  density :math:`\rho_e \mathbf{u}_e` (i.e. component 3 of the conserved variable vector)
-  for the GEM (Geospace Environment Modeling) magnetic reconnection problem, as solved
-  using the 5-moment multi-fluid model.
-
-.. toctree::
-  :maxdepth: 2
+Continue with the :doc:`Postgkyl examples <postgkyl/examples>` or the
+:ref:`Gkeyll Quick Start Guide <quickstart>` to plot simulation output.
+The :doc:`command reference <postgkyl/reference/cli>` and
+:doc:`Python API reference <postgkyl/reference/api>` are generated from the
+same Postgkyl checkout.

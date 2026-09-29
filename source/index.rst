@@ -93,8 +93,10 @@ theorem-proving system developed in ``Racket``. Both the ``Maxima`` computer alg
 code and the ``Racket`` automated theorem-proving code are packaged as part of the
 :math:`\texttt{gkylcas}` project, `whose GitHub repository can be found here
 <https://github.com/gkeyllorg/gkylcas>`_. Finally, the :math:`\texttt{postgkyl}`
-visualization and post-processing framework is developed in Python, based on
-``matplotlib``, and `its GitHub repository can be found here
+visualization and post-processing framework provides a Python library and the
+``pgkyl`` command-line tool. See the :doc:`Postgkyl documentation
+<postgkyl/index>` for installation, examples, and API and command references.
+These pages are built directly from the `Postgkyl repository
 <https://github.com/gkeyllorg/postgkyl>`_.
 
 Developers
@@ -193,3 +195,5 @@ Other Pages
   gkeyll/pubs
   gkeyll/presentations
   dev/main
+  processes/main
+  aboutAndLicense
